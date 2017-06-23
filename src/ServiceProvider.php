@@ -2,8 +2,8 @@
 
 namespace OneMustCode\LaravelDDD;
 
-use DIJ\DDD\Commands\CreateCommand;
-use DIJ\DDD\Commands\ProjectCommand;
+use OneMustCode\LaravelDDD\Commands\CreateCommand;
+use OneMustCode\LaravelDDD\Commands\ProjectCommand;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class ServiceProvider extends LaravelServiceProvider
