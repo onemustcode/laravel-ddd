@@ -1,0 +1,48 @@
+<?php
+
+namespace {{ NAMESPACE }}\Domain\{{ GROUP }}\Services;
+
+use {{ NAMESPACE }}\Domain\{{ GROUP }}\Entities\{{ ENTITY }};
+use {{ NAMESPACE }}\Domain\{{ GROUP }}\Exceptions\{{ ENTITY }}NotFoundException;
+use OneMustCode\Paginator\PaginatorInterface;
+use OneMustCode\Query\Query;
+
+interface {{ ENTITY }}ServiceInterface
+{
+    /**
+     * @return {{ ENTITY }}
+     */
+    public function create{{ ENTITY }}(): {{ ENTITY }};
+
+    /**
+     * @param int $id
+     * @return {{ ENTITY }}
+     * @throws {{ ENTITY }}NotFoundException
+     */
+    public function get{{ ENTITY }}(int $id): {{ ENTITY }};
+
+    /**
+     * @param Query $query
+     * @return array
+     */
+    public function get{{ ENTITY_PLURAL }}(Query $query): array;
+
+    /**
+     * @param Query $query
+     * @return PaginatorInterface
+     */
+    public function get{{ ENTITY_PLURAL }}Paginated(Query $query): PaginatorInterface;
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return {{ ENTITY }}
+     */
+    public function update{{ ENTITY }}(int $id, array $data): {{ ENTITY }};
+
+    /**
+     * @param int $id
+     * @return void
+     */
+    public function delete{{ ENTITY }}(int $id);
+}

@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ NAMESPACE }}\Domain\{{ GROUP }}\Exceptions;
+
+use {{ NAMESPACE }}\Domain\Core\Exceptions\NotFoundException;
+
+class {{ ENTITY }}NotFoundException extends NotFoundException
+{
+    /**
+     * @param int $id
+     * @return {{ ENTITY }}NotFoundException
+     */
+    public static function byId(int $id)
+    {
+        return new self(
+            sprintf('{{ ENTITY_HUMAN }} with id [%d] not found!', $id)
+        );
+    }
+}

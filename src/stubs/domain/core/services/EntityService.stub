@@ -1,0 +1,93 @@
+<?php
+
+namespace {{ NAMESPACE }}\Domain\{{ GROUP }}\Services;
+
+use {{ NAMESPACE }}\Domain\{{ GROUP }}\Entities\{{ ENTITY }};
+use {{ NAMESPACE }}\Domain\{{ GROUP }}\Exceptions\{{ ENTITY }}NotFoundException;
+use {{ NAMESPACE }}\Domain\{{ GROUP }}\Repositories\{{ ENTITY }}RepositoryInterface;
+use {{ NAMESPACE }}\Domain\Core\Hydrator\HydratorInterface;
+use OneMustCode\Paginator\PaginatorInterface;
+use OneMustCode\Query\Query;
+
+class {{ ENTITY }}Service implements {{ ENTITY }}ServiceInterface
+{
+    /** @var {{ ENTITY }}RepositoryInterface */
+    protected ${{ ENTITY_VARIABLE }}Repository;
+
+    /** @var HydratorInterface */
+    protected $hydrator;
+
+    /**
+     * @param {{ ENTITY }}RepositoryInterface ${{ ENTITY_VARIABLE }}Repository
+     * @param HydratorInterface $hydrator
+     */
+    public function __construct(
+        {{ ENTITY }}RepositoryInterface ${{ ENTITY_VARIABLE }}Repository,
+        HydratorInterface $hydrator
+    )
+    {
+        $this->{{ ENTITY_VARIABLE }}Repository = ${{ ENTITY_VARIABLE }}Repository;
+        $this->hydrator = $hydrator;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function get{{ ENTITY }}(int $id): {{ ENTITY }}
+    {
+        ${{ ENTITY_VARIABLE }} = $this->{{ ENTITY_VARIABLE }}Repository->findOne($id);
+
+        if (! ${{ ENTITY_VARIABLE }}) {
+            throw {{ ENTITY }}NotFoundException::byId($id);
+        }
+
+        return ${{ ENTITY_VARIABLE }};
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function get{{ ENTITY_PLURAL }}(Query $query): array
+    {
+        return $this->{{ ENTITY_VARIABLE }}Repository->findAllByQuery($query);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function get{{ ENTITY_PLURAL }}Paginated(Query $query): PaginatorInterface
+    {
+        return $this->{{ ENTITY_VARIABLE }}Repository->findPaginatedByQuery($query);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function create{{ ENTITY }}(): {{ ENTITY }}
+    {
+        ${{ ENTITY_VARIABLE }} = new {{ ENTITY }}();
+
+        return $this->{{ ENTITY_VARIABLE }}Repository->save(${{ ENTITY_VARIABLE }});
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function update{{ ENTITY }}(int $id, array $data): {{ ENTITY }}
+    {
+        ${{ ENTITY_VARIABLE }} = $this->get{{ ENTITY }}($id);
+
+        $this->hydrator->hydrate(${{ ENTITY_VARIABLE }}, $data);
+
+        return $this->{{ ENTITY_VARIABLE }}Repository->save(${{ ENTITY_VARIABLE }});
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function delete{{ ENTITY }}(int $id)
+    {
+        ${{ ENTITY_VARIABLE }} = $this->get{{ ENTITY }}($id);
+        $this->{{ ENTITY_VARIABLE }}Repository->remove(${{ ENTITY_VARIABLE }});
+    }
+}

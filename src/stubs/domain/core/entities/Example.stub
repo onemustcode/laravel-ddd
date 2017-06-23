@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ NAMESPACE }}\Domain\{{ GROUP }}\Entities;
+
+use {{ NAMESPACE }}\Domain\Core\Entities\PrimaryKeyTrait;
+use {{ NAMESPACE }}\Domain\Core\Entities\TimestampsTrait;
+
+class {{ ENTITY }}
+{
+    use PrimaryKeyTrait;
+    use TimestampsTrait;
+
+    // code goes here
+}

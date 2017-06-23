@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ NAMESPACE }}\Domain\Core\Exceptions;
+
+use Exception;
+
+class LogicException extends Exception
+{
+    //
+}

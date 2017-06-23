@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ NAMESPACE }}\Infrastructure\Persistence\Doctrine\Repositories\{{ GROUP }};
+
+use {{ NAMESPACE }}\Domain\{{ GROUP }}\Repositories\{{ ENTITY }}RepositoryInterface;
+use {{ NAMESPACE }}\Infrastructure\Persistence\Doctrine\Repositories\AbstractRepository;
+
+class {{ ENTITY }}Repository extends AbstractRepository implements {{ ENTITY }}RepositoryInterface
+{
+    //
+}

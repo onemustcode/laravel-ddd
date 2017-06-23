@@ -1,0 +1,9 @@
+<?php
+
+namespace {{ NAMESPACE }}\Domain\Core\Entities;
+
+trait TimestampsTrait
+{
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+}
