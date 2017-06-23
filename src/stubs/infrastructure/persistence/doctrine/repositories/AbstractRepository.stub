@@ -43,7 +43,7 @@ abstract class AbstractRepository extends EntityRepository
     {
         $queryBuilder = $this->buildQueryBuilderFromQuery(null, $query);
 
-        return $queryBuilder->getQuery()->getSingleResult();
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
     /**
