@@ -30,7 +30,7 @@ class ProjectCommand extends AbstractCommand
             return;
         }
 
-        $existing = $this->ask('Is it an existing project?');
+        $existing = $this->ask('Is it an existing project [y/n]?', 'n') == 'y';
 
         $source = $this->ask('What is the source directory' . ($existing ? '' : ' (default src)'), 'src');
         $namespace = $this->ask('What is the project namespace?');
