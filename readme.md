@@ -4,7 +4,7 @@ Package to simply setup a Domain Driven Desgin Application in Laravel 5.x.
 ## Installation
 Require the Query library trough composer.
 ```
-compose require onemustcode/laravel-ddd
+composer require onemustcode/laravel-ddd
 ```
 
 After updating composer, add the ServiceProvider to the providers array in config/app.php
